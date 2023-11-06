@@ -1,0 +1,37 @@
+<html>
+<head>
+
+</head>
+<body>
+
+<button type="button" onclick="loadXMLDoc()">Get my CD Collection</button>
+<p id="demo"></p>
+
+<script>
+function loadXMLDoc() {
+  var xmlhttp = new XMLHttpRequest();
+  xmlhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      myFunction(this);
+    }
+  };
+  xmlhttp.open("GET", "cd_catalog.xml", true);
+  xmlhttp.send();
+}
+
+function myFunction(xml) {
+  var i,x,txt;
+  var xmlDoc = xml.responseXML;
+  txt="";
+  x = xmlDoc.documentElement.childNodes;
+  for (i = 0; i <x.length; i++) {
+    if(x[i].nodeType==1){
+        txt += x[i].nodeName + "<br>";
+    }
+  }
+  document.getElementById("demo").innerHTML = txt;
+}
+</script>
+
+</body>
+</html>

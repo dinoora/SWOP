@@ -1,0 +1,29 @@
+<html>
+<head>
+
+</head>
+<body>
+
+<p id="demo"></p>
+
+<script>
+
+  var xmlhttp = new XMLHttpRequest();
+  xmlhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      myFunction(this);
+    }
+  };
+  xmlhttp.open("GET", "cd_catalog.xml", true);
+  xmlhttp.send();
+
+
+function myFunction(xml) {
+  var xmlDoc = xml.responseXML;
+ 
+  document.getElementById("demo").innerHTML = xmlDoc.documentElement.nodeName;
+}
+</script>
+
+</body>
+</html>
